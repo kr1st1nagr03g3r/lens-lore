@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Container from "@/components/container";
-import HeroPost from "@/components/hero-post";
+// import HeroPost from "@/components/hero-post";
 import Intro from "@/components/intro";
 import Layout from "@/components/layout";
 import MoreStories from "@/components/more-stories";

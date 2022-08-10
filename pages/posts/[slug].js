@@ -51,18 +51,16 @@ export async function getStaticProps({ params, preview = false }) {
             }
           }
 
-
-
             photoGallery {
+              filename
       responsiveImage {
+        
         title
         src
         alt
       }
     }
           
-
-    
           
           date
           ogImage: coverImage{
@@ -136,7 +134,7 @@ export default function Post({ subscription, preview }) {
   } = useQuerySubscription(subscription);
 
   const metaTags = post.seo.concat(site.favicon);
-
+  const images = post.photoGallery
   return (
     <Layout preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
@@ -151,7 +149,9 @@ export default function Post({ subscription, preview }) {
           />
           <PostBody content={post.content} />
         </article>
+        {images.map((singleImage) => { singleImage.filename)}
         <SectionSeparator />
+
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
