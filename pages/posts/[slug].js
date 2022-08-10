@@ -34,6 +34,8 @@ export async function getStaticProps({ params, preview = false }) {
           }
           title
           slug
+
+
           content {
             value
             blocks {
@@ -48,6 +50,16 @@ export async function getStaticProps({ params, preview = false }) {
               }
             }
           }
+
+            photoGallery {
+      responsiveImage {
+        title
+        src
+        alt
+      }
+    }
+          
+          
           date
           ogImage: coverImage{
             url(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 })
@@ -101,14 +113,14 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
-          }
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+        }
         : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
       preview,
     },
   };
