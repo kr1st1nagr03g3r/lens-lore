@@ -51,6 +51,8 @@ export async function getStaticProps({ params, preview = false }) {
             }
           }
 
+
+
             photoGallery {
       responsiveImage {
         title
@@ -59,6 +61,8 @@ export async function getStaticProps({ params, preview = false }) {
       }
     }
           
+
+    
           
           date
           ogImage: coverImage{
