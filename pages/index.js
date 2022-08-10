@@ -53,15 +53,15 @@ export async function getStaticProps({ preview }) {
     props: {
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
-            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
-          }
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+          environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
+        }
         : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
     },
   };
 }
@@ -81,7 +81,7 @@ export default function Index({ subscription }) {
         <Head>{renderMetaTags(metaTags)}</Head>
         <Container>
           <Intro />
-          {heroPost && (
+          {/* {heroPost && (
             <HeroPost
               title={heroPost.title}
               coverImage={heroPost.coverImage}
@@ -90,7 +90,7 @@ export default function Index({ subscription }) {
               slug={heroPost.slug}
               excerpt={heroPost.excerpt}
             />
-          )}
+          )} */}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
       </Layout>
