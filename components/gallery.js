@@ -1,13 +1,16 @@
-import singleimage from './singleimage';
+import SectionSeparator from "./section-separator";
+import Singleimage from "./Singleimage";
 
-
-export default function gallery({ allImages }) {
-    return (
-        <>
-            <singleimage
-                {allImages.map((image) => (
-                    <Card card={image} singleImage="image" key={image.filename} />
-                ))} />
-        </>
-    );
+export default function gallery({ myPhotos }) {
+  console.log("gallery");
+  const count = myPhotos.length;
+  return (
+      <>
+          <p>there are {count} photos in this gallery</p>
+          <SectionSeparator/>
+      {myPhotos.map((image) => (
+          <Singleimage photo={image} key={image.filename} />
+                ))} 
+    </>
+  );
 }

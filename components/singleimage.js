@@ -1,7 +1,7 @@
-export default function singleimage({ singleImage }) {
-
-    return (
-        <p>singleImage.filename</p>
-
-    );
+export default function Singleimage({ photo, count }) {
+  return (
+    <>
+      <p>{photo.filename}</p>
+    </>
+  );
 }
