@@ -58,6 +58,15 @@ export async function getStaticProps({ params, preview = false }) {
         title
         src
         alt
+            photoGallery {
+      responsiveImage {
+        src
+        srcSet
+        width
+        height
+        title
+      }
+    }
       }
     }
           
