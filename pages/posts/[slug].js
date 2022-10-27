@@ -34,8 +34,6 @@ export async function getStaticProps({ params, preview = false }) {
           }
           title
           slug
-
-
           content {
             value
             blocks {
@@ -50,27 +48,6 @@ export async function getStaticProps({ params, preview = false }) {
               }
             }
           }
-
-            photoGallery {
-              filename
-      responsiveImage {
-        
-        title
-        src
-        alt
-            photoGallery {
-      responsiveImage {
-        src
-        srcSet
-        width
-        height
-        title
-      }
-    }
-      }
-    }
-          
-          
           date
           ogImage: coverImage{
             url(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 })
@@ -88,7 +65,24 @@ export async function getStaticProps({ params, preview = false }) {
               }
             }
           }
+
+    photoGallery {
+      height
+      url
+      responsiveImage {
+        title
+        src
+      }
+      alt
+      author
+      id
+      title
+      width
+    }
+
         }
+
+       
 
         morePosts: allPosts(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
           title
@@ -143,7 +137,7 @@ export default function Post({ subscription, preview }) {
   } = useQuerySubscription(subscription)
 
   const metaTags = post.seo.concat(site.favicon)
-  const images = post.photoGallery
+
   return (
     <Layout preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
@@ -158,11 +152,7 @@ export default function Post({ subscription, preview }) {
           />
           <PostBody content={post.content} />
         </article>
-        {images.map((singleImage) => {
-          singleImage.filename
-        })}
         <SectionSeparator />
-
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
